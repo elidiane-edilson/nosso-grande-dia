@@ -69,3 +69,52 @@ if (carousel) {
   const nextButton = carousel.querySelector('.carousel-next');
   setInterval(() => nextButton.click(), autoplayInterval);
 }
+
+
+// Mensagens para os noivos — Xano
+const XANO_MESSAGES_ENDPOINT = 'https://x8ki-letl-twmt.n7.xano.io/api:AhzlN-Et/messages';
+
+const messageForm = document.getElementById('message-form');
+if (messageForm) {
+  const messageSubmit = document.getElementById('message-submit');
+  const messageFeedback = document.getElementById('message-feedback');
+
+  messageForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const name = document.getElementById('guest-name').value.trim();
+    const message = document.getElementById('guest-message').value.trim();
+
+    if (!name || !message) return;
+
+    messageSubmit.disabled = true;
+    messageSubmit.textContent = 'Enviando...';
+    messageFeedback.textContent = '';
+    messageFeedback.className = 'message-feedback';
+
+    try {
+      const response = await fetch(XANO_MESSAGES_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, message })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      messageForm.reset();
+      messageFeedback.textContent = '❤️ Obrigado pelo carinho! Sua mensagem foi enviada.';
+      messageFeedback.className = 'message-feedback success';
+    } catch (error) {
+      console.error('Erro ao enviar mensagem:', error);
+      messageFeedback.textContent = 'Não conseguimos enviar sua mensagem. Tente novamente em instantes.';
+      messageFeedback.className = 'message-feedback error';
+    } finally {
+      messageSubmit.disabled = false;
+      messageSubmit.textContent = 'Enviar mensagem';
+    }
+  });
+}

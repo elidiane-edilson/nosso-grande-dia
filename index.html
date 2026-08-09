@@ -26,6 +26,7 @@
         <li><a href="#day">O Grande Dia</a></li>
         <li><a href="#gifts">Presentes</a></li>
         <li><a href="#rsvp">RSVP</a></li>
+        <li><a href="#message">Mensagem</a></li>
       </ul>
       <!-- <img class="nav-bird nav-bird-right" src="assets/images/swallow.png" alt="Andorinha decorativa"> -->
       <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
@@ -216,6 +217,34 @@
         </div>
       </div>
     </section>
+
+    <section id="message" class="section container message-section">
+      <div class="section-heading centered">
+        <span>Um carinho para nós</span>
+        <h2>Deixe uma mensagem</h2>
+      </div>
+
+      <div class="simple-card message-card">
+        <p>Quer deixar um recadinho para os noivos? Vamos guardar cada mensagem com muito carinho.</p>
+
+        <form id="message-form" class="message-form">
+          <label for="guest-name">Seu nome</label>
+          <input id="guest-name" name="name" type="text" maxlength="100" placeholder="Como podemos chamar você?"
+            required autocomplete="name">
+
+          <label for="guest-message">Sua mensagem</label>
+          <textarea id="guest-message" name="message" rows="5" maxlength="1000"
+            placeholder="Escreva uma mensagem para nós..." required></textarea>
+
+          <button class="btn btn-primary" type="submit" id="message-submit">
+            Enviar mensagem
+          </button>
+
+          <p id="message-feedback" class="message-feedback" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
   </main>
 
   <footer>

@@ -1,10 +1,13 @@
-:root{
---bg:#f8f6f2;
---surface:#ffffff;
---text:#433a34;
---muted:#7a7068;
---accent:#c8a66a;
---radius:18px;
---shadow:0 10px 30px rgba(0,0,0,.08);
---container:1100px;
+:root {
+  --bg: #fff;
+  --bg-dark: #f8f6f2;
+  /* --bg: #f0ede7; */
+  /* --bg:#f8f6f2; */
+  --surface: #ffffff;
+  --text: #433a34;
+  --muted: #7a7068;
+  --accent: #c8a66a;
+  --radius: 18px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, .08);
+  --container: 1100px;
 }

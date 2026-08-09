@@ -161,7 +161,8 @@
 }
 
 .story-section {
-  background: #f0ede7
+  /* background: #f0ede7 */
+  background: var(--bg-dark)
 }
 
 .story-layout {
@@ -255,7 +256,7 @@
 }
 
 .day-section {
-  background: #fff
+  background: var(--bg)
 }
 
 .countdown {
@@ -378,7 +379,7 @@
 footer {
   text-align: center;
   padding: 3rem 1rem;
-  background: var(--bg)
+  background: var(--bg-dark)
 }
 
 @keyframes heroFade {
@@ -590,7 +591,7 @@ footer {
   transform: scaleX(1);
 }
 
- .footer-images {
+.footer-images {
   display: flex;
   width: fit-content;
   justify-content: center;
@@ -670,4 +671,122 @@ footer {
     width: 46px;
     height: 46px;
   }
+}
+
+/* Mensagens para os noivos */
+.message-card {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.message-form {
+  display: grid;
+  gap: .55rem;
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+.message-form label {
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted, #777);
+  margin-top: .35rem;
+}
+
+.message-form input,
+.message-form textarea {
+  width: 100%;
+  border: 1px solid rgba(80, 65, 50, .18);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .7);
+  padding: .85rem 1rem;
+  font: inherit;
+  color: inherit;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.message-form textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+.message-form input:focus,
+.message-form textarea:focus {
+  border-color: rgba(80, 65, 50, .42);
+  box-shadow: 0 0 0 3px rgba(80, 65, 50, .07);
+}
+
+.message-form button {
+  justify-self: center;
+  margin-top: .8rem;
+}
+
+.message-form button:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+
+.message-feedback {
+  min-height: 1.4em;
+  margin: .15rem 0 0;
+  text-align: center;
+  font-size: .9rem;
+  padding-top: 20px;
+}
+
+.message-feedback.success {
+  color: #5d725c;
+}
+
+.message-feedback.error {
+  color: #9a5b55;
+}
+
+@media (max-width: 600px) {
+  .message-card {
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+  }
+
+  .message-form input,
+  .message-form textarea {
+    font-size: 16px;
+  }
+}
+
+/* Alternância de fundos das seções */
+.gifts-section {
+  background: var(--bg-dark);
+}
+
+.rsvp-section {
+  background: var(--bg);
+}
+
+.message-section {
+  background: var(--bg-dark);
+}
+
+/* Faz o fundo das seções-container ocupar toda a largura da tela */
+.gifts-section,
+.rsvp-section,
+.message-section {
+  box-shadow: 0 0 0 100vmax var(--section-bg, transparent);
+  clip-path: inset(0 -100vmax);
+}
+
+.gifts-section {
+  --section-bg: var(--bg-dark);
+}
+
+.rsvp-section {
+  --section-bg: var(--bg);
+}
+
+.message-section {
+  --section-bg: var(--bg-dark);
 }

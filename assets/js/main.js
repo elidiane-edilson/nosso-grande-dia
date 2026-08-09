@@ -71,6 +71,62 @@ if (carousel) {
 }
 
 
+// Seletor de emojis para a mensagem dos convidados
+const emojiToggle = document.getElementById('emoji-toggle');
+const emojiPicker = document.getElementById('emoji-picker');
+const emojiGrid = document.getElementById('emoji-grid');
+const guestMessage = document.getElementById('guest-message');
+
+if (emojiToggle && emojiPicker && emojiGrid && guestMessage) {
+  const emojis = [
+    '😀','😃','😄','😁','😂','🥰','😍','😘','🥹','😊','😎','🤗','🫶',
+    '❤️','🩷','🧡','💛','💚','💙','💜','🤍','🤎','💕','💖','💗','💓','💞',
+    '💍','💐','🥂','🍾','🎉','🎊','🥳','✨','🕊️','🌹','🌟','💫',
+    '🙏','👏','☺️','👍','❤️‍🔥','💋','😭','🤣','😱','🙌'
+  ];
+
+  emojis.forEach(emoji => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'emoji-option';
+    button.textContent = emoji;
+    button.setAttribute('aria-label', `Inserir ${emoji}`);
+    button.addEventListener('click', () => {
+      const start = guestMessage.selectionStart;
+      const end = guestMessage.selectionEnd;
+      const value = guestMessage.value;
+      guestMessage.value = value.slice(0, start) + emoji + value.slice(end);
+      const cursor = start + emoji.length;
+      guestMessage.focus();
+      guestMessage.setSelectionRange(cursor, cursor);
+      closeEmojiPicker();
+    });
+    emojiGrid.appendChild(button);
+  });
+
+  function closeEmojiPicker() {
+    emojiPicker.classList.remove('open');
+    emojiToggle.setAttribute('aria-expanded', 'false');
+  }
+
+  emojiToggle.addEventListener('click', event => {
+    event.stopPropagation();
+    const open = emojiPicker.classList.toggle('open');
+    emojiToggle.setAttribute('aria-expanded', String(open));
+    if (open) guestMessage.focus();
+  });
+
+  document.addEventListener('click', event => {
+    if (!emojiPicker.contains(event.target) && event.target !== emojiToggle) {
+      closeEmojiPicker();
+    }
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') closeEmojiPicker();
+  });
+}
+
 // Mensagens para os noivos — Xano
 const XANO_MESSAGES_ENDPOINT = 'https://x8ki-letl-twmt.n7.xano.io/api:AhzlN-Et/messages';
 

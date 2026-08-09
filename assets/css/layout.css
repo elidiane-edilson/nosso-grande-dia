@@ -790,3 +790,120 @@ footer {
 .message-section {
   --section-bg: var(--bg-dark);
 }
+
+/* Seletor de emojis da mensagem */
+.emoji-field {
+  position: relative;
+}
+
+.emoji-field textarea {
+  padding-right: 3.2rem;
+}
+
+.emoji-toggle {
+  position: absolute;
+  right: .65rem;
+  bottom: .65rem;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .9);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(60, 50, 40, .1);
+  transition: transform .2s ease, background .2s ease;
+  z-index: 2;
+}
+
+.emoji-toggle:hover {
+  transform: scale(1.08);
+  background: #fff;
+}
+
+.emoji-picker {
+  position: absolute;
+  right: .35rem;
+  bottom: calc(100% + .55rem);
+  width: min(340px, calc(100vw - 3rem));
+  padding: .85rem;
+  background: rgba(255, 253, 249, .98);
+  border: 1px solid rgba(80, 65, 50, .14);
+  border-radius: 14px;
+  box-shadow: 0 12px 35px rgba(55, 45, 35, .16);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(7px) scale(.98);
+  transform-origin: bottom right;
+  transition: opacity .16s ease, transform .16s ease, visibility .16s ease;
+  z-index: 20;
+}
+
+.emoji-picker.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.emoji-picker::after {
+  content: "";
+  position: absolute;
+  right: 14px;
+  bottom: -7px;
+  width: 13px;
+  height: 13px;
+  background: #fffdf9;
+  border-right: 1px solid rgba(80, 65, 50, .14);
+  border-bottom: 1px solid rgba(80, 65, 50, .14);
+  transform: rotate(45deg);
+}
+
+.emoji-picker-title {
+  margin: 0 0 .65rem;
+  color: var(--muted);
+  font-size: .62rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.emoji-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 3px;
+  max-height: 185px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.emoji-option {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .15s ease, transform .15s ease;
+}
+
+.emoji-option:hover {
+  background: rgba(109, 123, 104, .1);
+  transform: scale(1.12);
+}
+
+@media (max-width: 600px) {
+  .emoji-picker {
+    right: 0;
+    width: min(310px, calc(100vw - 2.5rem));
+  }
+
+  .emoji-option {
+    width: 31px;
+    height: 31px;
+  }
+}

@@ -233,8 +233,16 @@
             required autocomplete="name">
 
           <label for="guest-message">Sua mensagem</label>
-          <textarea id="guest-message" name="message" rows="5" maxlength="1000"
-            placeholder="Escreva uma mensagem para nós..." required></textarea>
+          <div class="emoji-field">
+            <textarea id="guest-message" name="message" rows="5" maxlength="1000"
+              placeholder="Escreva uma mensagem para nós..." required></textarea>
+            <button class="emoji-toggle" type="button" id="emoji-toggle"
+              aria-label="Inserir emoji" aria-expanded="false" aria-controls="emoji-picker">😊</button>
+            <div class="emoji-picker" id="emoji-picker" role="dialog" aria-label="Escolha um emoji">
+              <div class="emoji-picker-title">Escolha um emoji</div>
+              <div class="emoji-grid" id="emoji-grid"></div>
+            </div>
+          </div>
 
           <button class="btn btn-primary" type="submit" id="message-submit">
             Enviar mensagem
